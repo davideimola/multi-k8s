@@ -15,7 +15,7 @@ before_install:
 #   - gcloud config set project <Project ID>
 #   - gcloud config set compute/zone <Location>
 #   - gcloud container clusters get-credentials <Cluster name>
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
   - docker build -t davideimola/fibonacci-dev -f ./client/Dockerfile.dev ./client
 script:
   - docker run -e CI=true davideimola/fibonacci-dev npm run test
